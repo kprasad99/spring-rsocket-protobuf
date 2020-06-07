@@ -1,5 +1,21 @@
 = Spring RSocket Protobuf
+
 Example project for Spring Boot RSocket with Protocol Buffer
+
+== Example Feature.
+
+* RSocket client-server.
+* Endpoint `/api/person` -> json endpoint with simple pojo.
+* Endpoint `/api/proto-json/person` -> protobuf object as a json endpoint(**Not working**).
+* Endpoint `/api/proto/person` -> protobuf object endpoint.
+* Endpoint `/api/rsoc/person` -> rsocket client-server endpoint with protobuf mime type.
+* Ports
+** person service -> `8080`
+** person service rsocket -> `9080`
+** person client service -> `8081`
+** person client service rsocket -> `9081`
+* Performance of the varies endpoint/communication modes can be compared using actuator endpoint `/actuator/prometheus`
+of `person-client-service`  
 
 == How to test rsocket directly.
 
