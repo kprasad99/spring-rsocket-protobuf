@@ -1,0 +1,14 @@
+= Spring RSocket Protobuf
+Example project for Spring Boot RSocket with Protocol Buffer
+
+== How to test rsocket directly.
+
+* Download https://github.com/making/rsc/releases/tag/0.4.2[rsc.jar], a rsocket cli client.
+
+* Now execute below command to retrieve `json` data.
++
+----
+java -jar rsc-0.4.2.jar tcp://localhost:9080 \
+    -r io.github.kprasad99.json.person \
+    --stream
+----

@@ -1,0 +1,26 @@
+
+syntax = "proto3";
+
+package io.github.kprasad99.person;
+
+import "google/protobuf/empty.proto";
+
+option java_outer_classname = "PersonProto";
+option java_package = "io.github.kprasad.person.proto";
+
+
+message Person {
+    int32 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    int32 age = 4;
+}
+
+message Persons {
+	repeated Person person = 1;
+}
+
+service PersonService {
+    rpc get (google.protobuf.Empty) returns (stream Person);
+}
+	

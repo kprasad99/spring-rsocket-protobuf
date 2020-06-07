@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.kprasad99</groupId>
+    <artifactId>spring-rsocket-protobuf</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-rsocket-protobuf</name>
+    <packaging>pom</packaging>
+    <description>Example project for Spring Boot RSocket with Protocol Buffer</description>
+    <modules>
+        <module>person-service</module>
+        <module>person-client-service</module>
+    </modules>
+</project>
