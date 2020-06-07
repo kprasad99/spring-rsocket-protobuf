@@ -11,3 +11,7 @@ management:
     export:
       prometheus:
         enabled: true
+person:
+  backend:
+    host: localhost
+    port: 9080
