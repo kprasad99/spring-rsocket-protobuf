@@ -30,6 +30,7 @@ public class PersonProtoService {
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, "application/x-protobuf"})
 	public Flux<Person> list(){
+	    log.info("Listing all persons");
 		return Flux.fromIterable(personDao.findAll()).map(toProto).map(Person.Builder::build).subscribeOn(Schedulers.boundedElastic());
 	}
 

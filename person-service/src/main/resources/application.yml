@@ -2,3 +2,14 @@ spring:
   rsocket:
     server:
       port: 9080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

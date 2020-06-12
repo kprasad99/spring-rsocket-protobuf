@@ -28,3 +28,23 @@ java -jar rsc-0.4.2.jar tcp://localhost:9080 \
     -r io.github.kprasad99.json.person \
     --stream
 ----
+
+== Compare the performance of endpoints.
+
+Though the data is too less you can add the data to database before running the applicaiton.
+
+- Start the applications, prometheus and grafana.
++
+----
+$ docker-compose -f docker-compose-dev.yml up -d
+----
++
+NOTE: `openjdk` docker image is a custom image, you might need to change to any available `jdk-11` one.
+
+- Once the application is started open Grafana UI at `http://localhost:30072`
++
+NOTE: Default username/password is `admin/admin`
+
+- Open postman and import collection `postman/spring-rsocket-protobuf.postman_collection.json`.
+
+- Now use the runner tool to run the collection with N-number of requests.

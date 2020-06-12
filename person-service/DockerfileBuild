@@ -1,0 +1,23 @@
+# FROM openjdk:11-jre-slim
+# FROM amazoncorretto:11
+
+FROM maven:3-jdk-11 as builder
+
+COPY . /app-build
+
+WORKDIR /app-build
+
+RUN mkdir -p /app && mvn clean package -DskipTests && \
+    mv target/person-service-*.jar /app/app.jar
+
+
+FROM kprasad99/openjdk:11-jre-alpine
+
+ENV JAVA_TOOLS_OPTS=$JAVA_TOOLS_OPTS
+VOLUME /tmp
+
+COPY --from=builder /app /app
+
+WORKDIR /app
+
+ENTRYPOINT ["java","-jar","app.jar"]

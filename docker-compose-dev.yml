@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  person-service:
+    build: 
+      context: ./person-service
+      dockerfile: DockerfileBuild
+    networks:
+      - person-network
+  person-client-service:
+    build: 
+      context: ./person-client-service
+      dockerfile: DockerfileBuild
+    ports:
+      - 8081:8081
+    environment:
+      - person.backend.host=person-service
+      - person.backend.httpPort=8080
+      - person.backend.rsocPort=9080
+    networks:
+      - person-network
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 30074:9090
+    volumes:
+      - ./prometheus:/etc/prometheus/
+    networks:
+      - person-network
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 30072:3000
+    volumes:
+      - ./dashboards:/dashboards
+      - ./dashboard-config:/etc/grafana/provisioning/dashboards
+      - ./datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - person-network
+networks:
+  person-network:

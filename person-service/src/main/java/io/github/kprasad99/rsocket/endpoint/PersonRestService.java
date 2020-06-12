@@ -20,16 +20,17 @@ public class PersonRestService {
 
 	@Autowired
 	private PersonDao personDao;
-	
+
 	@GetMapping
 	public Flux<Person> list(){
+	    log.info("Listing all persons");
 		return Flux.fromIterable(personDao.findAll()).subscribeOn(Schedulers.boundedElastic());
 	}
-	
+
 	@GetMapping("/{id}")
 	public Mono<Person> findById(@PathVariable("id")int id){
 		log.info("Requesting data for person with id {}", id);
 		return Mono.justOrEmpty(personDao.findById(id)).subscribeOn(Schedulers.boundedElastic());
 	}
-	
+
 }

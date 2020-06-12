@@ -22,6 +22,7 @@ public class RSocketClientConfig {
 
     private static final String PATHPATTERN_ROUTEMATCHER_CLASS = "org.springframework.web.util.pattern.PathPatternRouteMatcher";
 
+
     @Bean
     public RSocketStrategies rSocketStrategies(ObjectProvider<RSocketStrategiesCustomizer> customizers) {
         RSocketStrategies.Builder builder = RSocketStrategies.builder();
@@ -42,7 +43,7 @@ public class RSocketClientConfig {
         RSocketRequester rsocketRequester = rsocketRequesterBuilder.rsocketStrategies(strategies)
                 .dataMimeType(new MimeType("application", "x-protobuf"))
                 // .rsocketConnector(connector -> connector.acceptor(responder))
-                .connectTcp(clientProp.getHost(), clientProp.getPort()).retry().block();
+                .connectTcp(clientProp.getHost(), clientProp.getRsocPort()).retry().block();
 
         rsocketRequester.rsocket().onClose().doOnError(error -> log.warn("Connection CLOSED"))
                 .doFinally(consumer -> log.info("Client DISCONNECTED")).subscribe();

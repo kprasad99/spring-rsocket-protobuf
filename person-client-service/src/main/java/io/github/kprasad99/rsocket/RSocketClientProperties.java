@@ -9,6 +9,7 @@ import lombok.Data;
 public class RSocketClientProperties {
 
     private String host;
-    private int port;
+    private int httpPort;
+    private int rsocPort;
 
 }

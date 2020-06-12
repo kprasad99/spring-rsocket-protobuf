@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -22,11 +23,16 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@EnableConfigurationProperties(RSocketClientProperties.class)
 public class PersonProtoClient {
 
-	@Value("${client.port:8080}")
-	private int port;
+    @Autowired
+    private RSocketClientProperties props;
 	private WebClient client;
+
+	private String getUrl() {
+	    return String.format("http://%s:%d", props.getHost(), props.getHttpPort());
+	}
 
 	@PostConstruct
 	public void init() {
@@ -40,7 +46,7 @@ public class PersonProtoClient {
 							gen.writeRawValue(str);
 						}
 					}).build()));
-		}).baseUrl("http://localhost:" + port).build();
+		}).baseUrl(getUrl()).build();
 	}
 
 	public Flux<Person> personsJson() {

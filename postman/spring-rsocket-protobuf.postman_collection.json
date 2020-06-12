@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "32fe53ad-6fb1-4c50-9340-dba5d8358f98",
+		"name": "spring-rsocket-protobuf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RSocket",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJXNVlONWpDZEhzVm5HcjhUa01aSDhqbEJGYTlYMXNfYmY0MWFkOWlBQ0pRIn0.eyJleHAiOjE1OTA4NTk5OTksImlhdCI6MTU5MDg1OTY5OSwianRpIjoiOGVjYjExZmYtZWE5ZS00N2E1LThmNTAtMmExMjQ0ZTZjYmE5IiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguNTYuMTIxOjE4MDgwL2F1dGgvcmVhbG1zL3VuaXZlcnNhbCIsInN1YiI6ImNkYTVmNjAyLTdiNTgtNGQ2My04NzNkLWIwZjExNzcyY2VlNyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImtwX2FwcDEiLCJzZXNzaW9uX3N0YXRlIjoiOGJhZjhiMTktMWZlYS00MzM0LTljNDQtMGQwNjQ5ZTExMDcwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vMTkyLjE2OC41Ni4xMjE6NDIwMSJdLCJyZXNvdXJjZV9hY2Nlc3MiOnsia3BfYXBwMSI6eyJyb2xlcyI6WyJBUFAxX0FETUlOIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiQWRtaW5pc3RyYXRvciAxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4xIiwiZ2l2ZW5fbmFtZSI6IkFkbWluaXN0cmF0b3IiLCJmYW1pbHlfbmFtZSI6IjEiLCJhdXRob3JpdGllcyI6WyJST0xFX0FQUDFfQURNSU4iXX0.ZXawn_nZEgy7nNGhwmqVkw5sPhpmaXWjcCFQta-YfGTRMTggK3QwznSOeQP1V6prSnVoWGYSBbOu4N0-veHotHzplVwd5rigabbn2fxriq3_zAob-hYxvrWZaZZQeUqnMNh71am5X613jdBgVSPclNgzPZ8yQ7HIE5eeHMl8Ib9zqpjF0g0mY1VmyaIBa_lrllXzuw1_h1q3xtSfpbcQyhbJb_fEujJaD5BPv2DfQ7on6KSDy8ABaEAnLjfnNDbDhQ_IJ-wwbD6zTHs9YRK0ewAhGQ9Qwtvvi6l3baej-CZSGc98R9Nm5HXslGribpN5PPbJmYQEznDhpxysNSWQhw",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/x-protobuf",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"s\",\n    \"lastName\": \"t\",\n    \"age\": 22,\n    \"id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webflux-protobuf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/proto/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"proto",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webflux-json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/rsoc/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rsoc",
+						"person"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
